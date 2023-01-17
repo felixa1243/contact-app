@@ -1,8 +1,6 @@
-import {Image, LayoutAnimation, SectionList, Text, TouchableOpacity, View} from "react-native";
-import user from '../../fixture/dummyUser.json'
-import {groupAlphabetBy} from "../../utils/groupAlphabetBy";
 import {memo, useState} from "react";
-import {getRandomColor} from "../../utils/randomColor";
+import {Image, LayoutAnimation, Text, TouchableOpacity, View} from "react-native";
+import {getRandomColor} from "../../../utils/randomColor";
 
 const RenderImage = memo((props) => {
     return (
@@ -20,7 +18,6 @@ const RenderImage = memo((props) => {
         </View>
     )
 })
-
 const RenderContact = (props) => {
     const [selectedId, setSelected] = useState("")
     const onPressHandler = () => {
@@ -68,24 +65,4 @@ const RenderContact = (props) => {
         </TouchableOpacity>
     )
 }
-
-const CourseList = () => {
-    return (
-        <SectionList
-            style={{width: '100%', height: '100%'}}
-            initialNumToRender={5}
-            sections={groupAlphabetBy(user, "firstName")}
-            renderItem={(data) => RenderContact(data)}
-            renderSectionHeader={(data) => RenderHeader(data.section)}
-            keyExtractor={(_, index) => index}
-            stickySectionHeadersEnabled
-        />
-    )
-}
-const RenderHeader = (item) => (
-    <View style={{backgroundColor: "#dedede", paddingHorizontal: 20, paddingVertical: 10}}>
-        <Text>{item.title}</Text>
-    </View>
-)
-
-export default CourseList
+export default RenderContact

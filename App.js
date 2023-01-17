@@ -1,5 +1,7 @@
 import {Platform, SafeAreaView, StatusBar, StyleSheet, Text, UIManager, View} from 'react-native';
-import CourseList from "./src/components/CourseList/Index";
+import {Home, Settings} from "./src/screens/Index";
+import BottomTab from "./src/navigations/BottomTab";
+import MainNavigation from "./src/navigations/MainNavigation";
 
 export default function App() {
     if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -9,7 +11,7 @@ export default function App() {
         <SafeAreaView style={styles.container}>
             <StatusBar/>
             <View style={{
-                height: 80,
+                height: 60,
                 justifyContent: 'space-between',
                 width: '100%',
                 padding: 10,
@@ -22,7 +24,7 @@ export default function App() {
                     <Text style={{color: 'white', fontSize: 18, marginRight: 10, fontWeight: 'bold'}}>menu</Text>
                 </View>
             </View>
-            <CourseList/>
+            <MainNavigation/>
         </SafeAreaView>
     );
 }
@@ -30,15 +32,6 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fafafa',
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: '#fafafa'
     },
 });
-const box = {
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.5,
-    shadowRadius: 2,
-    elevation: 2,
-}
