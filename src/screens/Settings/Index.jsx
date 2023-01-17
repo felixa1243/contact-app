@@ -1,7 +1,7 @@
 import {Text, View} from "react-native";
 import style from './style'
 
-const Settings = () => {
+const Settings = (props) => {
     return (
         <View style={style.container}>
             <Text style={style.text}>Settings</Text>

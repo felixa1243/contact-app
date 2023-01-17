@@ -1,14 +1,12 @@
 import {ContactList} from "../Index";
-import {Text, View} from "react-native";
+import {View} from "react-native";
 import style from "./style";
-import {Button} from "../../components/Index";
+import {useNavigate} from "../../hook/useNavigate";
 
-const Home = () => {
+const Home = (props) => {
+    const navigate = useNavigate()
     return (
-        <View style={style.container}>
-            <Button style={style.btn}><Text style={[style.text,{color:'white'}]}>Go to Feed</Text></Button>
-            <ContactList/>
-        </View>
+        <ContactList/>
     )
 }
 export default Home

@@ -9,7 +9,7 @@ import RenderHeader from "./components/RenderHeader";
 const ContactList = () => {
     return (
         <SectionList
-            style={{width: '100%', height: '100%'}}
+            style={{width:'100%', height: '100%'}}
             initialNumToRender={5}
             sections={groupAlphabetBy(user, "firstName")}
             renderItem={(data) => RenderContact(data)}
