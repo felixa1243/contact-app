@@ -1,17 +1,18 @@
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import {Home, Settings} from "../screens/Index";
+import {Settings} from "../screens/Index";
 import {Icon} from "../components/Index";
+import HomeStack from "./stack/HomeStack";
 
 const TabNavigator = createBottomTabNavigator()
 const BottomTab = () => {
     const navList = [
-        {name: 'Home screen', component: Home, icon: "home"},
-        {name: 'Settings', component: Settings, icon: "md-cog"}
+        {name: 'Home', component: HomeStack, icon: "home", showHeader: false},
+        {name: 'Settings', component: Settings, icon: "md-cog", showHeader: true}
     ]
     return (
         <TabNavigator.Navigator>
             {
-                navList.map((item, index) => {
+                navList.map((item) => {
                     return (
                         <TabNavigator.Screen
                             name={item.name}
@@ -21,6 +22,7 @@ const BottomTab = () => {
                                     lazy: true,
                                     tabBarLabel: () => null,
                                     title: item.name,
+                                    headerShown: item.showHeader,
                                     tabBarIcon: ({focused}) => <Icon name={item.icon} focused={focused}/>
                                 }
                             }

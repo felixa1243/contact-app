@@ -1,6 +1,7 @@
 import {memo, useState} from "react";
 import {Image, LayoutAnimation, Text, TouchableOpacity, View} from "react-native";
 import {getRandomColor} from "../../../utils/randomColor";
+import {useNavigate} from "../../../hook/useNavigate";
 
 const RenderImage = memo((props) => {
     return (
@@ -20,9 +21,15 @@ const RenderImage = memo((props) => {
 })
 const RenderContact = (props) => {
     const [selectedId, setSelected] = useState("")
+    const navigate = useNavigate()
     const onPressHandler = () => {
         LayoutAnimation.configureNext(LayoutAnimation.Presets.spring)
         setSelected(selectedId === "" ? props.item.id : "")
+    }
+    const onLongPressHandler = () => {
+        navigate("Details",{
+            id:props.item.id
+        })
     }
     return (
         <TouchableOpacity style={{
@@ -31,6 +38,7 @@ const RenderContact = (props) => {
             borderBottomColor: "#dedede"
         }}
                           onPress={onPressHandler}
+                          onLongPress={onLongPressHandler}
                           activeOpacity={1}
         >
             <RenderImage item={props.item}/>
